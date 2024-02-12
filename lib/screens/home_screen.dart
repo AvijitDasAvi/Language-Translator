@@ -15,7 +15,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Container(),
+      drawer: Container(
+        child: Text("Name:"),
+      ),
       backgroundColor: const Color(0xff10223d),
       appBar: AppBar(
         title: const Text("Language Translator"),
