@@ -112,8 +112,53 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Padding(
                 padding: EdgeInsets.all(8.0),
-                child: TextFormField(),
-              )
+                child: TextFormField(
+                  cursorColor: Colors.white,
+                  autofocus: false,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                  decoration: InputDecoration(
+                      labelText: "Please enter your text...",
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                          width: 1.0,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                          width: 1.0,
+                        ),
+                      ),
+                      errorStyle: TextStyle(
+                        color: Colors.red,
+                        fontSize: 15.0,
+                      )),
+                  controller: languageController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter text to translate";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xff2b3c5a),
+                  ),
+                  onPressed: () {},
+                  child: Text("Translate"),
+                ),
+              ),
             ],
           ),
         ),
