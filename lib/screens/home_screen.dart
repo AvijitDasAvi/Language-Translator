@@ -20,7 +20,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       backgroundColor: const Color(0xff10223d),
       appBar: AppBar(
-        title: const Text("Language Translator"),
+        title: const Text(
+          "Language Translator",
+          style: TextStyle(
+            fontSize: 18.0,
+            color: Colors.blueAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: const Color(0xff10223d),
         elevation: 0.0,
