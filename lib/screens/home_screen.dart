@@ -78,8 +78,41 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(
                     width: 40.0,
-                  )
+                  ),
+                  DropdownButton(
+                    focusColor: Colors.white,
+                    iconDisabledColor: Colors.white,
+                    iconEnabledColor: Colors.white,
+                    hint: Text(
+                      destinationLanguage,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    dropdownColor: Colors.white,
+                    icon: Icon(Icons.keyboard_arrow_down),
+                    items: language.map(
+                      (String dropDownStringItem) {
+                        return DropdownMenuItem(
+                          child: Text(dropDownStringItem),
+                          value: dropDownStringItem,
+                        );
+                      },
+                    ).toList(),
+                    onChanged: (String? value) {
+                      setState(() {
+                        destinationLanguage = value!;
+                      });
+                    },
+                  ),
                 ],
+              ),
+              SizedBox(
+                width: 40.0,
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: TextFormField(),
               )
             ],
           ),
