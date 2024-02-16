@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:translator/translator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,6 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
   var originLanguage = "From";
   var destinationLanguage = "To";
   TextEditingController languageController = TextEditingController();
+  void translate(String src, String dest, String input) async {
+    GoogleTranslator translator = new GoogleTranslator();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
