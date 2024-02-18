@@ -12,11 +12,32 @@ class _HomeScreenState extends State<HomeScreen> {
   var language = ['Hindi', 'English', 'Bangla'];
   var originLanguage = "From";
   var destinationLanguage = "To";
+  var output = "";
+
   TextEditingController languageController = TextEditingController();
+
   void translate(String src, String dest, String input) async {
     GoogleTranslator translator = new GoogleTranslator();
     var translation = await translator.translate(input, from: src, to: dest);
-    setState(() {});
+    setState(() {
+      output = translation.text.toString();
+    });
+    if (src == '--' || dest == '--') {
+      setState(() {
+        output = "Fail to translate";
+      });
+    }
+  }
+
+  String getLanguageCode(String language) {
+    if (language == "English") {
+      return "en";
+    } else if (language == "Hindi") {
+      return "hi";
+    } else if (language == "Bangla") {
+      return "bn";
+    }
+    return "--";
   }
 
   @override
@@ -162,10 +183,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xff2b3c5a),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    translate(
+                      getLanguageCode(originLanguage),
+                      getLanguageCode(destinationLanguage),
+                      languageController.text.toString(),
+                    );
+                  },
                   child: Text("Translate"),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "\n$output",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                ),
+              )
             ],
           ),
         ),
